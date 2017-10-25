@@ -18,8 +18,13 @@ page-information {
         border-radius: 40px;
     }
     ion-content.mainpage {
-        background-color: darkslategrey;
+        // background-color: #233982;
         opacity: 0.95;
+        background-image: url('../assets/icon/picwall.png');
+        background-size: cover;
+        background-position-x: left;
+        overflow-y: hidden;
+        overflow: hidden;
     }
     ion-item.ionbtnsubmit {
         text-align: center;
@@ -28,5 +33,17 @@ page-information {
     .item-md {
         background-color: transparent;
         color: #fff;
+    }
+    ion-item.item {
+        margin-top: 6%;
+    }
+    ion-item.ionbtnsubmit.item {
+        margin-top: 25%;
+    }
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #fff;
+    }
+    .no-scroll .scroll-content{
+        overflow: hidden;
     }
 }

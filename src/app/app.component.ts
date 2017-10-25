@@ -11,6 +11,7 @@ import { TestPage } from '../pages/test/test';
 import { SettingPage } from '../pages/setting/setting';
 import { SharedlistsPage } from '../pages/sharedlists/sharedlists';
 import  { ProfilePage } from '../pages/profile/profile';
+import { PanelTables } from '../pages/paneltables/paneltables';
 
 import { Dbservice } from '../providers/dbservice/dbservice';
 import { SqliteProvider } from '../providers/sqlite/sqlite';
@@ -24,7 +25,9 @@ export class MyApp {
 
   rootPage: any;
 
-  pages: Array<{title: string,icon:any, component: any}>;
+  pages: Array<{title: string,icon:any,color:any, component: any}>;
+
+  powered:any;
 
   constructor(
     public platform: Platform, 
@@ -35,14 +38,16 @@ export class MyApp {
     public sqlite:SqliteProvider
   ) {
     this.initializeApp();
+    this.powered = (new Date().getFullYear()).toString();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home',icon:'home', component: HomePage },
+      { title: 'Home',icon:'home',color:'homebar', component: HomePage },
       //{ title: 'Shared Details',icon:'infinite', component: HomePage },
-      { title: 'Shared Lists',icon:'information-circle', component: SharedlistsPage },
-      { title: 'Profile',icon:'ios-person', component: ProfilePage },
-      { title: 'Settings',icon:'ios-settings', component: SettingPage }
+      { title: 'Shared Lists',icon:'information-circle',color:'homebar', component: SharedlistsPage },
+      { title: 'Profile',icon:'ios-person',color:'homebar', component: ProfilePage },
+      { title: 'Settings',icon:'ios-settings',color:'homebar', component: SettingPage },
+      { title: 'Panel',icon:'document',color:'homebar', component: PanelTables },
     ];
 
 
@@ -60,14 +65,14 @@ export class MyApp {
   }
 
   ionViewDidLoad(){
-    
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
+      this.statusBar.backgroundColorByHexString("#1f3375");
       this.splashScreen.hide();
       this.sqlite.openDb();
     });

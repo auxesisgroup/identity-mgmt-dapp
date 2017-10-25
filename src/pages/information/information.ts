@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from '../../app/app.component';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -45,7 +46,8 @@ export class Information {
     public loadCtrl:LoadingController,
     public toastCtrl:ToastController,
     public sq:SqliteProvider,
-    public web3:Web3service
+    public web3:Web3service,
+    public statusBar:StatusBar
   ) {
       this.menuCtrl.enable(false, 'myMenu');
       this.menuCtrl.swipeEnable(false, 'myMenu');
@@ -108,13 +110,17 @@ export class Information {
     this.menuCtrl.swipeEnable(false, 'myMenu');
     this.menuCtrl.swipeEnable(false);
 
+    this.statusBar.styleLightContent();
+    this.statusBar.backgroundColorByHexString("#233982");
+    this.statusBar.hide();
+
     this.sq.getTodoListTable().then(
       (res)=>{
         res = JSON.stringify(res);
         console.log(res);
       },
       (err)=>{
-        alert("err:"+JSON.stringify(err));
+        //alert("err:"+JSON.stringify(err));
       }
     ).then(
       (a)=>{console.log(a);},
@@ -181,5 +187,6 @@ export class Information {
     });
     this.navCtrl.setRoot(MyApp);
     localStorage.setItem("isInTestapp","Y");
+    this.statusBar.show();
   }
 }

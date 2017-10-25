@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import { Subject } from 'rxjs/Subject';
 
 import { Web3service }        from '../../providers/web3service/web3service';
 import { SqliteProvider } from '../../providers/sqlite/sqlite';
@@ -7,6 +10,7 @@ import moment from 'moment';
 
 import { AlertController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 import  { ViewaddressmodalPage } from '../viewaddressmodal/viewaddressmodal';
 import { SharedlistsPage } from '../sharedlists/sharedlists';
@@ -18,12 +22,17 @@ import { SharedlistsPage } from '../sharedlists/sharedlists';
 })
 export class HomePage {
 
+  observable:Observable<String>;
+  observer:Observer<String>;
+  private subject = new Subject<any>();
+  
   constructor(
     public navCtrl: NavController,
     public sq:SqliteProvider,
     public web3:Web3service,
     public alertCtrl:AlertController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public toastCtrl:ToastController
   ) {
 
     console.warn(this.web3.get());
@@ -43,6 +52,44 @@ export class HomePage {
     //     alert("err:"+JSON.stringify(err));
     //   }
     // );
+
+    // this.web3.atestPromise()
+    // .then(res=>{
+    //   console.log(res);
+    // },fail=>{
+    //   console.error(fail);
+    // })
+    // .catch(d=>{
+    //   console.warn(d);
+    // });
+
+    //this.observerFun();
+    this.sq.getListOfTables().then(
+      (d)=>{console.log(d)},
+      (e)=>{console.log(e)}
+    ).catch(e=>{console.log(e)});
+  }
+
+  observerFun(){
+    this.observable = new Observable((observer:Observer<string>)=>{
+      this.observer = observer;
+    });
+    this.observable.subscribe(this.handleData,this.handleError,this.handleComplete);
+    this.observer.next('2');
+    this.observer.next('3');
+    this.observer.next('4');
+    this.observer.complete();
+    this.observer.next('6');
+    this.observer.complete();
+  }
+  handleData(data){
+    console.log("data\n"+JSON.stringify(data));
+  }
+  handleError(){
+    console.log("error");
+  }
+  handleComplete(){
+    console.log("complete");
   }
 
   myaddress(){
@@ -55,11 +102,15 @@ export class HomePage {
 
   sharedetails(){
     this.alertCtrl.create({
-      title:'Enter Address',
+      title:'Enter contract address',
       inputs:[
         {
-          name:'address',
-          placeholder:'type address'
+          name:'contractaddress',
+          placeholder:'type contract address'
+        },
+        {
+          name:'uniqueaddress',
+          placeholder:'type unique key address'
         },
       ],
       buttons:[
@@ -73,7 +124,18 @@ export class HomePage {
         {
           text: 'Submit',
           handler: data => {
-            console.log(data.address);
+            let contract = data.contractaddress;
+            let unique = data.uniqueaddress;
+            if(contract=="" || contract==null){
+              this.toastCtrl.create({
+                message:'Both address field is required',
+                duration:1500,
+                position:'top'
+              }).present();
+            }else{
+              console.log(data.contractaddress+"\n"+data.uniqueaddress);
+              this.web3.saveShareDetails(data);
+            }
           }
         }
       ]
@@ -81,7 +143,7 @@ export class HomePage {
   }
 
   sharedlists(){
-    this.navCtrl.push(SharedlistsPage,{
+    this.navCtrl.setRoot(SharedlistsPage,{
       user:'u11',
       address:'asdf'
     });

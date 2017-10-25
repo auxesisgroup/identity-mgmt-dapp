@@ -418,4 +418,52 @@ export class Web3service {
        return res;
     });
   }
+
+
+  //from home.ts 
+  saveShareDetails(data){
+    let d = data.contractaddress;
+    let u = data.uniqueaddress;
+    console.log(d+" "+u);
+    this.sq.insertFromHomeTSAddresses(d,u);
+  }
+
+
+  
+
+  //test
+  atestPromise(){
+    // return new Promise((resolve,reject)=>{
+    //   if(2===2){
+    //     resolve({"status":"true"});
+    //   }else{
+    //     reject({"status":"false"});
+    //   }
+      
+    // });
+
+    try{
+      let a = this.func1();
+      let b = this.func2();
+      console.log(a);
+      console.log(b);
+      if( a && b ){
+        return Promise.resolve("okfine in promise!");
+      }else{
+        return Promise.reject("failded");
+      }
+    }catch(e){
+      console.log(e);
+    }
+  }
+  func1(){
+    return new Promise((resolve,reject)=>{
+      resolve("Im func1!");
+    });
+  }
+  func2(){
+    return new Promise((resolve,reject)=>{
+      resolve("I got promise!");
+    });
+  }
 }

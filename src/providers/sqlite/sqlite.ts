@@ -40,6 +40,7 @@ export class SqliteProvider {
         tx.executeSql('CREATE TABLE IF NOT EXISTS info (id integer primary key autoincrement,name text,dlno text,securityno text,created text,updated text)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS storesecret (id integer primary key autoincrement,message text,address text,privatekey text,defaulgas text,provider text,secure text,publickey text,wallet text,created text,updated text)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS contractaddressfind (id integer primary key autoincrement,address text,privatekey text,publickey text,contractaddress text,contracttx text,created text,updated text)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS savesharedetail (id integer primary key autoincrement,contractaddress text,uniqueaddress text,name text,created text,updated text)');
         //this.addItem("adf").then(d=>{console.warn(d)});
         //tx.executeSql("INSERT INTO Todo (todoItem) VALUES (?)",["ABCDEFGH"],(r)=>{console.warn(r)},(e)=>{console.error(e)});
       }, (e) => {
@@ -53,7 +54,7 @@ export class SqliteProvider {
 
   /**
    * 
-   * @param addItem for adding: function
+   * @param addItem for adding: function test
    */
   addItem(i) {
     return new Promise((resolve,reject) => {
@@ -100,7 +101,7 @@ export class SqliteProvider {
 
   /**
    * 
-   * Select Queries
+   * Main Select Queries
    */
   refresh(){
     return new Promise((resolve,reject)=>{
@@ -169,7 +170,33 @@ export class SqliteProvider {
       });
     });
   }
+
+
+  getListOfTables(){//*** Just Fun */
+    return new Promise((resolve,reject)=>{
+      this.db.transaction(tx=>{
+        let query = "SELECT * FROM sqlite_master WHERE type='table'";
+        tx.executeSql(query, [], (t,rs) => {
+          console.log(rs.rows.length);
+          if(rs.rows.length>0){
+            resolve(rs.rows);
+          }else{
+            resolve({message:"No records",length:0});
+          }
+          
+        }, (e) => {
+          reject(e);
+        });
+      }, (e) => {
+        reject(e);
+      }, (data) => {
+        console.log("transaction done!"+data);//if table is not always go to then err in ts view
+      });
+    });
+  }
   
+
+  //test function
   getRows() {
     return new Promise((res,reject) => {
 
@@ -204,7 +231,7 @@ export class SqliteProvider {
     })
 
   }
-  //to delete any Item
+  //to delete any Item test
   del(id) {
     return new Promise(resolve => {
       var query = "DELETE FROM Todo WHERE id=?";
@@ -223,7 +250,7 @@ export class SqliteProvider {
     })
 
   }
-  //to Update any Item
+  //to Update any Item test
   update(id, txt) {
     return new Promise(res => {
       var query = "UPDATE Todo SET todoItem=?  WHERE id=?";
@@ -247,7 +274,9 @@ export class SqliteProvider {
 
 
 
-  //main
+  /**
+   * main insert queries
+   */
   testaa(){
     return "adsf";
   }
@@ -330,6 +359,27 @@ export class SqliteProvider {
         console.log('status OK..');
         resolve(true)
       });
+    });
+  }
+
+  //25 oct 17
+  insertFromHomeTSAddresses(d,u){
+    //contractaddress,uniqueaddress,name,created,updated
+    let created = moment().format("YYYY-MM-DD H:mm:ss");
+    let name = "ABCDContractNAddress";
+    return new Promise((resolve,reject)=>{
+      var insert = "INSERT INTO savesharedetail(contractaddress,uniqueaddress,name,created,updated) VALUES(?,?,?,?,?)";
+      this.db.transaction((tx)=>{
+        tx.executeSql(insert,[d,u,name,created,created],(res)=>{
+          resolve(true);
+        },(err)=>{
+          reject(false);
+        });
+      },(e)=>{
+        reject(false);
+      },()=>{
+        resolve(true);
+      })
     });
   }
 }

@@ -1,19 +1,19 @@
 page-home {
     .homebuttons {
-        height: 100%;
+        // height: 100%;
         padding: 0;
         text-align: center;
     }
     .homeimagebtdiv {
         position: absolute;
         bottom: 0;
-        padding: 5%;
+        padding: 15%;
     }
     .homebuttons button {
         margin-top: 15%;
         width: 70%;
     }
     ion-content.content.content-md {
-        background-color: floralwhite;
+        // background-color: #324375;
     }
 }

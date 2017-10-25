@@ -13,6 +13,7 @@ import  { ShareddetailmodalPage } from '../pages/shareddetailmodal/shareddetailm
 import  { ViewaddressmodalPage } from '../pages/viewaddressmodal/viewaddressmodal';
 import  { SharedlistsPage } from '../pages/sharedlists/sharedlists';
 import  { ProfilePage } from '../pages/profile/profile';
+import { PanelTables } from '../pages/paneltables/paneltables';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     ShareddetailmodalPage,
     SharedlistsPage,
     ViewaddressmodalPage,
-    ProfilePage
+    ProfilePage,
+    PanelTables
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     ShareddetailmodalPage,
     SharedlistsPage,
     ViewaddressmodalPage,
-    ProfilePage
+    ProfilePage,
+    PanelTables
   ],
   providers: [
     StatusBar,
