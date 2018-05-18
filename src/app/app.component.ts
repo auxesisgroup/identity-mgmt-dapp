@@ -46,7 +46,7 @@ export class MyApp {
       //{ title: 'Shared Details',icon:'infinite', component: HomePage },
       { title: 'Shared Lists',icon:'information-circle',color:'homebar', component: SharedlistsPage },
       { title: 'Profile',icon:'ios-person',color:'homebar', component: ProfilePage },
-      { title: 'Setting',icon:'ios-settings',color:'homebar', component: SettingPage },
+      { title: 'Settings',icon:'ios-settings',color:'homebar', component: SettingPage },
       { title: 'About',icon:'document',color:'homebar', component: PanelTables },
     ];
 
