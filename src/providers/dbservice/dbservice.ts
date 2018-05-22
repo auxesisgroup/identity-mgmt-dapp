@@ -13,15 +13,15 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 export class Dbservice {
 
   constructor(
-    public http: Http,
-    public sqlite:SQLite
+    private http: Http,
+    private sqlite:SQLite
   ) {
     console.log('Hello DbserviceProvider Provider');
 
   }
 
   dbInit(){ 
-    console.log("donestart");
+    // console.log("donestart");
     this.sqlite.create({
       name:'auxesis.db',
       location:'default'
