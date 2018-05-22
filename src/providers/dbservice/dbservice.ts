@@ -12,7 +12,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 @Injectable()
 export class Dbservice {
 
-  constructor(
+  constructor( 
     private http: Http,
     private sqlite:SQLite
   ) {
