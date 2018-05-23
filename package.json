@@ -1,8 +1,8 @@
 {
-  "name": "testv2",
+  "name": "IMA",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "auxesisgroup",
+  "homepage": "https://auxesisgroup.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
