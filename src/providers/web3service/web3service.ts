@@ -8,8 +8,8 @@ import secureRandom from 'secure-random';
 //import * as fs from 'fs';
 import solc from 'solc';
 import Tx from 'ethereumjs-tx';
-import _ from 'lodash';
-import Buffer from 'buffer';
+import * as _ from 'lodash';
+import * as Buffer from 'buffer';
 
 import { SqliteProvider } from '../sqlite/sqlite';
 

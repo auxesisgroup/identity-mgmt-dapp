@@ -16,7 +16,7 @@ export class Dbservice {
     private http: Http,
     private sqlite:SQLite
   ) {
-    console.log('Hello DbserviceProvider Provider');
+    // console.log('Hello DbserviceProvider Provider');
 
   }
 
@@ -28,10 +28,12 @@ export class Dbservice {
     }).then((db:SQLiteObject)=>{
       
       db.executeSql('CREATE TABLE IF NOT EXISTS dummy(id primary key autoincrement number(11),name varchar(50))',{})
-      .then(()=>console.log('Table created'))
+      .then(()=>{
+        //console.log('Table created') no need to show
+      })
       .catch((e)=>console.log(e+' failed'));
 
-      db.executeSql('INSERT INTO dummy values("ABCD")',{})
+      db.executeSql('INSERT INTO dummy values("This is a text")',{})
       .then(()=>console.log('Record inserted'))
       .catch((e)=>console.log(e+' record failed'));
 
