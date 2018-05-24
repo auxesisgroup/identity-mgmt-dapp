@@ -35,7 +35,7 @@ export class HomePage {
     public toastCtrl:ToastController
   ) {
 
-    console.warn(this.web3.get());
+    //console.warn(this.web3.get());
 
     //to create contract for user address this.web3.contractcreate('contract.sol','0x65De584139871151d17Ec6A70619eBd6cD50E3e7','0xe7eef1e341f69c5120a89a4df3ba1c3f66360a4eeeb99c228ab80b460e75505a');//"Hello Console!"//4326456255760057600642401462415876547643681 secure
     //this.web3.contractcreate('contract.sol','0x65De584139871151d17Ec6A70619eBd6cD50E3e7','0xe7eef1e341f69c5120a89a4df3ba1c3f66360a4eeeb99c228ab80b460e75505a');//"Hello Console!"//4326456255760057600642401462415876547643681 secure
@@ -70,7 +70,7 @@ export class HomePage {
     ).catch(e=>{console.log(e)});
   }
 
-  observerFun(){
+  observerFun() {
     this.observable = new Observable((observer:Observer<string>)=>{
       this.observer = observer;
     });
@@ -82,17 +82,17 @@ export class HomePage {
     this.observer.next('6');
     this.observer.complete();
   }
-  handleData(data){
-    console.log("data\n"+JSON.stringify(data));
+  handleData(data) {
+    // console.log("data\n"+JSON.stringify(data));
   }
-  handleError(){
-    console.log("error");
+  handleError() {
+    // console.log("error");
   }
-  handleComplete(){
-    console.log("complete");
+  handleComplete() {
+    // console.log("complete");
   }
 
-  myaddress(){
+  myaddress() {
     const pModal = this.modalCtrl.create(ViewaddressmodalPage,{
       user:'u1',
       address:'ah'
@@ -100,7 +100,7 @@ export class HomePage {
     pModal.present();
   }
 
-  sharedetails(){
+  sharedetails() {
     this.alertCtrl.create({
       title:'Enter contract address',
       inputs:[
@@ -118,7 +118,7 @@ export class HomePage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            // console.log('Cancel clicked');
           }
         },
         {
@@ -133,7 +133,7 @@ export class HomePage {
                 position:'top'
               }).present();
             }else{
-              console.log(data.contractaddress+"\n"+data.uniqueaddress);
+              //console.log(data.contractaddress+"\n"+data.uniqueaddress);
               this.web3.saveShareDetails(data);
             }
           }
