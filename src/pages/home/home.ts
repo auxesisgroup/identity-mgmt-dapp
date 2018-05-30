@@ -35,7 +35,7 @@ export class HomePage {
     public toastCtrl:ToastController
   ) {
 
-    //console.warn(this.web3.get());
+    // console.warn(this.web3.get());
 
     //to create contract for user address this.web3.contractcreate('contract.sol','0x65De584139871151d17Ec6A70619eBd6cD50E3e7','0xe7eef1e341f69c5120a89a4df3ba1c3f66360a4eeeb99c228ab80b460e75505a');//"Hello Console!"//4326456255760057600642401462415876547643681 secure
     //this.web3.contractcreate('contract.sol','0x65De584139871151d17Ec6A70619eBd6cD50E3e7','0xe7eef1e341f69c5120a89a4df3ba1c3f66360a4eeeb99c228ab80b460e75505a');//"Hello Console!"//4326456255760057600642401462415876547643681 secure
@@ -106,11 +106,11 @@ export class HomePage {
       inputs:[
         {
           name:'contractaddress',
-          placeholder:'type contract address'
+          placeholder:'Type contract address'
         },
         {
           name:'uniqueaddress',
-          placeholder:'type unique key address'
+          placeholder:'Type unique key address'
         },
       ],
       buttons:[
