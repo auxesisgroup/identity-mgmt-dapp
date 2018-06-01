@@ -115,7 +115,7 @@ export class HomePage {
       ],
       buttons:[
         {
-          text: 'Cancel',
+          text: 'Dismiss',
           role: 'cancel',
           handler: data => {
             // console.log('Cancel clicked');
