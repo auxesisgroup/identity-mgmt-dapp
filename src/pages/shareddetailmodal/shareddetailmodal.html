@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar class="homebar" color="homebar">
-    <ion-title>Auxesis Shared Detail</ion-title>
+    <ion-title>Shared Details</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="closeModal()">
         <ion-icon name="home"></ion-icon>
@@ -19,8 +19,8 @@
 <ion-content padding>
   <div class="sdddiv">
     <h3>Address</h3><br>
-    <p>{{address}}</p><br>
+    <p>{{address?address:'NA'}}</p><br>
     <img src="assets/icon/barcode.png" class="barcodeimg"><br>
-    <button ion-button round block (click)="scan()">Scan</button>
+    <button ion-button round block (click)="scan()">Scan Document</button>
   </div>
 </ion-content>

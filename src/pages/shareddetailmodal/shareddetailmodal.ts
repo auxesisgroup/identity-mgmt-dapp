@@ -22,7 +22,7 @@ export class ShareddetailmodalPage {
     public navParams: NavParams,
     public viewCtrl: ViewController
   ) {
-    this.address = this.navParams.get("address");
+    this.address = this.navParams.get("address")?this.navParams.get("address"):'NA';
   }
 
   ionViewDidLoad() {
