@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -19,7 +19,7 @@ export class PanelTables {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PanelTablesPage');
+    console.log('ionViewDidLoad PanelTables Page');
   }
 
 }
