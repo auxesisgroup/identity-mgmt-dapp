@@ -19,7 +19,7 @@ export class PanelTables {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PanelTables Page');
+    //console.log('ionViewDidLoad PanelTables Page');
   }
 
 }
