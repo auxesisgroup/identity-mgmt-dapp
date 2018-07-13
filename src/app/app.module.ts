@@ -37,7 +37,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     SharedlistsPage,
     ViewaddressmodalPage,
     ProfilePage,
-    PanelTables
+    PanelTables,
+    AuthPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     SharedlistsPage,
     ViewaddressmodalPage,
     ProfilePage,
-    PanelTables
+    PanelTables,
+    AuthPage
   ],
   providers: [
     StatusBar,
