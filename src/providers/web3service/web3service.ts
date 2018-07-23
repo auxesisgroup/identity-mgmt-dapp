@@ -58,8 +58,8 @@ export class Web3service {
     return new Promise((resolve,reject)=>{
       try{
         var privatekey = Web3.utils.sha3("Toholampi is the best town on the worlsdd123");
-        //var version = Web3.version.api;
-        //console.log(privatekey);
+        var version = Web3.version.api;
+        console.log(privatekey);
         resolve(privatekey);
       }
       catch(Exception){
