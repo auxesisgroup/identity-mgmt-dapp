@@ -65,16 +65,12 @@ export class Information {
 
   callw3(){
     this.web3data = this.web3.get();
-    //console.info(this.web3data);
 
     let msha = this.web3.msha();
-    //console.warn(msha);
 
     let wallet = this.web3.makeetherwallet("Hi this is angularjs and ionic");
-    console.warn(wallet);
 
     let secure = this.web3.makesecure();
-    console.warn(secure);
 
     this.showValues = [
       'version.network',
@@ -117,7 +113,7 @@ export class Information {
     this.sq.getTodoListTable().then(
       (res)=>{
         res = JSON.stringify(res);
-        console.log(res);
+        console.log('TODO LIST:', res);
       },
       (err)=>{
         //alert("err:"+JSON.stringify(err));
